@@ -1,0 +1,38 @@
+method,
+    mesh_adaptive_search
+    model_pointer = 'SURROGATE'
+    use_surrogate optimize
+
+model,
+    id_model = 'SURROGATE'
+    surrogate global
+    polynomial quadratic
+    dace_method_pointer = 'SAMPLING'
+
+variables,
+    continuous_design = 6
+      initial_point 1.0 1.0 1.0 1.0 1.0 1.0 #1.0 1.0
+      upper_bounds  1.5 1.5 1.5 1.5 1.5 1.5 #1.5 1.5
+      lower_bounds  0.5 0.5 0.5 0.5 0.5 0.5 #0.5 0.5
+      descriptors   'x1'  'x2'  'x3' 'x4'  'x5'  'x6' #'x7'  'x8'
+
+method,
+    id_method = 'SAMPLING'
+    model_pointer = 'TRUTH'
+    sampling
+      samples = 1000
+
+model,
+    id_model = 'TRUTH'
+    single
+      interface_pointer = 'TRUE_FN'
+
+interface,
+    id_interface = 'TRUE_FN'
+    fork
+        analysis_drivers = 'maxOkushiri_for_dakota.py'
+
+responses,
+    objective_functions = 1
+    no_gradients
+    no_hessians
