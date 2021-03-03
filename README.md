@@ -8,4 +8,5 @@ The paper is to be published in the ANZIAM Journal Proceedings of the CTAC 2020 
 
 We perform uncertainty quantification for a simulation of the Hokkaido Nansei-Oki Tsunami with [ANUGA](https://github.com/GeoscienceAustralia/anuga_core), for which we develop a better understanding by calculating key quantities such as mean, percentiles and maximum run-up. 
 The thorough UQ investigation is made possible by an efficient surrogate created with [SG++](https://github.com/SGpp/SGpp).
+For verification and comparison we use [DAKOTA](https://dakota.sandia.gov/).
 
